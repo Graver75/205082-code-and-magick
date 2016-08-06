@@ -1,7 +1,7 @@
 # Личный проект «Код и Магия» [![Build status][travis-image]][travis-url] [![Dependency status][dependency-image]][dependency-url]
 
 * Студент: [Илья Шилюк](https://up.htmlacademy.ru/javascript/6/user/205082).
-* Наставник: `Неизвестно`.
+* Наставник: `Александр Быков`.
 
 ---
 
