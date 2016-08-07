@@ -17,7 +17,7 @@ function getMessage (a, b) {
 		sMessage = 'Я прошёл ' + setSumm(a) + ' шагов';
 		return sMessage;
 	}
-	if(typeof b === 'object' && typeof(a) == 'object') {
+	if (typeof b === 'object' && typeof a == 'object') {
 		sMessage = 'Я прошёл ' + setPath(a, b) + ' метров';
 		return sMessage;
 	}
