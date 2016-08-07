@@ -1,24 +1,24 @@
 function getMessage (a, b) {
+	var sMessage;
 	if (typeof a === 'boolean') {
 		if (a) {
-			var sMessage = 'Я попал в ' + b;
+			sMessage = 'Я попал в ' + b;
 			return sMessage;
-		}
-		else {
-			var sMessage = 'Я никуда не попал';
+		} else {
+			sMessage = 'Я никуда не попал';
 			return sMessage;
 		}
 	}
  	if (typeof a === 'number') {
-		var sMessage = 'Я прыгнул на ' + a * 100 + ' сантиметров';
+		sMessage = 'Я прыгнул на ' + a * 100 + ' сантиметров';
 		return sMessage;
 	}
 	if (typeof a === 'object') {
-		var sMessage = 'Я прошёл ' + setSumm(a) + ' шагов';
+		sMessage = 'Я прошёл ' + setSumm(a) + ' шагов';
 		return sMessage;
 	}
 	if(typeof b === 'object' && typeof(a) == 'object') {
-		var sMessage = 'Я прошёл ' + setPath(a, b) + ' метров';
+		sMessage = 'Я прошёл ' + setPath(a, b) + ' метров';
 		return sMessage;
 	}
 }
@@ -26,22 +26,17 @@ function getMessage (a, b) {
 var summ = 0;
 var i;
 function setPath (a, b) {
-	for(i = 0; i <= a[a.length - 1]; i++) {
+	for(i = 0; i < a.length; i++) {
 		summ = summ + a[i] * b[i];
 
-		if (i === (a.length - 1)) {
-			return summ;
-		}
-
 	}
+	return summ; 
 }
 function setSumm (a) {
-	for(i =0; i <= a[a.length - 1]; i++) {
+	for(i = 0; i < a.length; i++) {
 		summ = summ + a[i];
-		if (i === (a.length - 1)) {
-			return summ;
-		}
 	}
+	return summ;
 }
 
 
