@@ -410,29 +410,21 @@ window.Game = (function() {
 
       switch (this.state.currentStatus) {
         case Verdict.WIN:
-
           this.ctx.fillText('Вы выиграли!', 300, 80);
-
           break;
         case Verdict.FAIL:
-
           this.ctx.fillText('Вы проиграли!', 300, 80);
-
           break;
         case Verdict.PAUSE:
-
           this.ctx.fillText('Игра на паузе!', 300, 80);
-
           break;
         case Verdict.INTRO:
-
           this.ctx.fillText('Добро пожаловать в игру,', 240, 80);
           this.ctx.fillText('я умею перемещаться', 240, 100);
           this.ctx.fillText('по нажатию на стрелки,', 240, 120);
           this.ctx.fillText('cтрелять файрболом', 240, 140);
           this.ctx.fillText('по нажатию на Shift.', 240, 160);
           this.ctx.fillText('Нажмите Space чтобы начать', 240, 180);
-
           break;
       }
     },
