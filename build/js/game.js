@@ -258,6 +258,8 @@ window.Game = (function() {
     this._pauseListener = this._pauseListener.bind(this);
 
     this.setDeactivated(false);
+    this.getInitialState();
+    //this.initializeLevelAndStart
   };
 
   Game.prototype = {
@@ -395,18 +397,42 @@ window.Game = (function() {
      * Отрисовка экрана паузы.
      */
     _drawPauseScreen: function() {
+
+      this.ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+      this.ctx.fillRect(230, 70, 300, 140);
+
+      this.ctx.fillStyle = '#FFFFFF';
+      this.ctx.fillRect(220, 60, 290, 130);
+
+      this.ctx.fillStyle = '#00F';
+      this.ctx.strokeStyle = '#F00';
+      this.ctx.font = '16px PT Mono';
+
       switch (this.state.currentStatus) {
         case Verdict.WIN:
-          console.log('you have won!');
+
+          this.ctx.fillText('Вы выиграли!', 300, 80);
+
           break;
         case Verdict.FAIL:
-          console.log('you have failed!');
+
+          this.ctx.fillText('Вы проиграли!', 300, 80);
+
           break;
         case Verdict.PAUSE:
-          console.log('game is on pause!');
+
+          this.ctx.fillText('Игра на паузе!', 300, 80);
+
           break;
         case Verdict.INTRO:
-          console.log('welcome to the game! Press Space to start');
+
+          this.ctx.fillText('Добро пожаловать в игру,', 240, 80);
+          this.ctx.fillText('я умею перемещаться', 240, 100);
+          this.ctx.fillText('по нажатию на стрелки,', 240, 120);
+          this.ctx.fillText('cтрелять файрболом', 240, 140);
+          this.ctx.fillText('по нажатию на Shift.', 240, 160);
+          this.ctx.fillText('Нажмите Space чтобы начать',240 ,180);
+
           break;
       }
     },
