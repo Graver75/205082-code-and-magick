@@ -431,7 +431,7 @@ window.Game = (function() {
           this.ctx.fillText('по нажатию на стрелки,', 240, 120);
           this.ctx.fillText('cтрелять файрболом', 240, 140);
           this.ctx.fillText('по нажатию на Shift.', 240, 160);
-          this.ctx.fillText('Нажмите Space чтобы начать',240 ,180);
+          this.ctx.fillText('Нажмите Space чтобы начать', 240, 180);
 
           break;
       }
