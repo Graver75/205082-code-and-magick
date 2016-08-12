@@ -32,3 +32,42 @@ window.form = (function() {
 
   return form;
 })();
+
+var name = document.querySelector('#review-name');
+var comment = document.querySelector('#review-text');
+var button = document.querySelector('.review-form-control.review-submit');
+var control = document.querySelector('div.review-form-control.review-fields');
+var controlName = document.querySelector('label.review-fields-label.review-fields-name');
+var controlComment = document.querySelector('label.review-fields-label.review-fields-text');
+
+button.setAttribute('disabled', 'disabled');
+
+name.onchange = function() {
+  listenForms();
+}
+comment.onchange = function() {
+  listenForms();
+}
+function listenForms() {
+  if (name.value === '' || comment.value === '') {
+
+    control.classList.remove('invisible');
+    button.disabled = true;
+
+
+    if (name.value !== '') {
+      controlName.classList.add('invisible');
+      //listenForms();
+    }
+    if (comment.value !== '') {
+      controlComment.classList.add('invisible');
+      //listenForms();
+    }
+
+  } else {
+
+    button.disabled = false;
+    control.classList.add('invisible');
+
+  }
+}
