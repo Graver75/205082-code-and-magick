@@ -49,25 +49,19 @@ comment.onchange = function() {
   listenForms();
 }
 function listenForms() {
-  if (name.value === '' || comment.value === '') {
 
-    control.classList.remove('invisible');
-    button.disabled = true;
+  if (name.value != '') {
+    controlName.classList.add('invisible');
+  }
+  if (comment.value != '') {
+    controlComment.classList.add('invisible');
+  }
 
-
-    if (name.value !== '') {
-      controlName.classList.add('invisible');
-      //listenForms();
-    }
-    if (comment.value !== '') {
-      controlComment.classList.add('invisible');
-      //listenForms();
-    }
-
-  } else {
+  if (name.value != '' && comment.value != '') {
 
     button.disabled = false;
     control.classList.add('invisible');
 
   }
 }
+
