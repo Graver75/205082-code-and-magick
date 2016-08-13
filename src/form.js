@@ -42,26 +42,89 @@ var controlComment = document.querySelector('label.review-fields-label.review-fi
 
 button.setAttribute('disabled', 'disabled');
 
-name.onchange = function() {
-  listenForms();
-}
-comment.onchange = function() {
-  listenForms();
-}
-function listenForms() {
+
+
+/* Проверка на автозаполнение браузером форм */
+(function checkInputs() {
 
   if (name.value != '') {
+
+    button.disabled = true;
     controlName.classList.add('invisible');
+
+  } else {
+
+    button.disabled = false;
+    controlName.classList.remove('invisible');
+
   }
   if (comment.value != '') {
-    controlComment.classList.add('invisible');
-  }
 
+    button.disabled = true;
+    controlComment.classList.add('invisible');
+
+  } else {
+
+    button.disabled = false;
+    controlComment.classList.remove('invisible');
+
+  }
   if (name.value != '' && comment.value != '') {
 
     button.disabled = false;
     control.classList.add('invisible');
 
+  } else {
+
+    button.disabled = true;
+    control.classList.remove('invisible');
+
+  }
+})()
+
+
+
+name.onchange = function() {
+  listenInputs();
+}
+comment.onchange = function() {
+  listenInputs();
+}
+function listenInputs() {
+
+  if (name.value != '') {
+
+    button.disabled = true;
+    controlName.classList.add('invisible');
+
+  } else {
+
+    button.disabled = false;
+    controlName.classList.remove('invisible');
+
+  }
+  if (comment.value != '') {
+
+    button.disabled = true;
+    controlComment.classList.add('invisible');
+
+  } else {
+
+    button.disabled = false;
+    controlComment.classList.remove('invisible');
+
+  }
+  if (name.value != '' && comment.value != '') {
+
+    button.disabled = false;
+    control.classList.add('invisible');
+
+  } else {
+
+    button.disabled = true;
+    control.classList.remove('invisible');
+
   }
 }
+
 
