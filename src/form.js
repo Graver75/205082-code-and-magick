@@ -50,25 +50,6 @@ var mark5 = document.querySelector('.review-mark-label-5');
 button.setAttribute('disabled', 'disabled');
 
 
-/* Проверка на автозаполнение браузером форм */
-(function checkInputs() {
-
-  if (name.value != '') {
-
-    button.disabled = false;
-    control.classList.add('invisible');
-
-  } else {
-
-    button.disabled = true;
-    control.classList.remove('invisible');
-
-  }
-
-})()
-
-
-
 name.onchange = function() {
   listenInputs();
 }
@@ -94,7 +75,58 @@ mark5.onclick = function() {
 
 function listenInputs(number) {
 
+  if (number < 3) {
 
+    if (name.value != '') {
+
+      controlName.classList.add('invisible');
+      button.disabled = true;
+
+    } else {
+
+      controlName.classList.remove('invisible');
+
+    }
+
+    if (comment.value != '') {
+
+      controlComment.classList.add('invisible');
+      button.disabled = true;
+
+    } else {
+
+      controlComment.classList.remove('invisible');
+
+    }
+
+    if (name.value != '' && comment.value != '') {
+
+      control.classList.add('invisible');
+      button.disabled = false;
+
+    } else {
+
+      control.classList.remove('invisible');
+      button.disabled = true;
+
+    }
+
+  } else {
+
+    if (name.value != '') {
+
+      control.classList.add('invisible');
+      button.disabled = false;
+
+    } else {
+
+      control.classList.remove('invisible');
+      controlComment.classList.add('invisible');
+      controlName.classList.remove('invisible');
+
+    }
+
+  }
 
 }
 
