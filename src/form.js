@@ -45,10 +45,6 @@ var mark2 = document.querySelector('.review-mark-label-2');
 var mark3 = document.querySelector('.review-mark-label-3');
 var mark4 = document.querySelector('.review-mark-label-4');
 var mark5 = document.querySelector('.review-mark-label-5');
-var mark1input = document.querySelector('#review-mark-1');
-var mark2input = document.querySelector('#review-mark-2');
-var mark3input = document.querySelector('#review-mark-3');
-var mark4input = document.querySelector('#review-mark-4');
 var mark5input = document.querySelector('#review-mark-5');
 
 /*Очистка полей автозаполнения браузера*/
@@ -59,31 +55,45 @@ button.disabled = true;
 controlComment.classList.add('invisible');
 
 name.onchange = function() {
+
   listenInputs();
+
 }
 
 comment.onchange = function() {
+
   listenInputs();
+
 }
 
 mark1.onclick = function() {
+
   listenInputs(1);
+
 }
 
 mark2.onclick = function() {
+
   listenInputs(2);
+
 }
 
 mark3.onclick = function() {
+
   listenInputs(3);
+
 }
 
 mark4.onclick = function() {
+
   listenInputs(4);
+
 }
 
 mark5.onclick = function() {
+
   listenInputs(5);
+
 }
 
 
@@ -124,7 +134,7 @@ function listenInputs(value) {
     control.classList.remove('invisible');
 
   }
-  if ( (value >=3) && name.value === '' && comment.value === '') {
+  if ( (value >= 3) && name.value === '' && comment.value === '') {
 
     button.disabled = true;
     control.classList.remove('invisible');
@@ -133,7 +143,7 @@ function listenInputs(value) {
 
   }
 
-  if ( (value < 3) && name.value != '' && comment.value != '' ) {
+  if ( (value < 3) && name.value !== '' && comment.value !== '' ) {
 
     control.classList.add('invisible');
     button.disabled = false;
@@ -145,7 +155,7 @@ function listenInputs(value) {
     button.disabled = true;
 
   }
-  if ( (value >= 3) && name.value != '' )  {
+  if ( (value >= 3) && name.value !== '' ) {
 
     control.classList.add('invisible');
     button.disabled = false;
