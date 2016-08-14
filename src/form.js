@@ -58,35 +58,38 @@ comment.value = '';
 button.disabled = true;
 controlComment.classList.add('invisible');
 
-name.onchange = function () {
+name.onchange = function() {
   listenInputs();
 }
-comment.onchange = function () {
+
+comment.onchange = function() {
   listenInputs();
 }
-mark1.onclick = function () {
+
+mark1.onclick = function() {
   listenInputs(1);
 }
-mark2.onclick = function () {
+
+mark2.onclick = function() {
   listenInputs(2);
 }
-mark3.onclick = function () {
+
+mark3.onclick = function() {
   listenInputs(3);
 }
-mark4.onclick = function () {
+
+mark4.onclick = function() {
   listenInputs(4);
 }
-mark5.onclick = function () {
+
+mark5.onclick = function() {
   listenInputs(5);
 }
 
 
-
-
-
 function listenInputs(value) {
 
-  if (name.value != '') {
+  if (name.value !== '') {
 
     button.disabled = true;
     controlName.classList.add('invisible');
@@ -98,7 +101,7 @@ function listenInputs(value) {
 
   }
 
-  if (comment.value != '') {
+  if (comment.value !== '') {
 
     button.disabled = true;
     controlComment.classList.add('invisible');
@@ -109,7 +112,7 @@ function listenInputs(value) {
     controlComment.classList.remove('invisible');
 
   }
-  if ( (value >= 3) && name.value != '' && comment.value === '') {
+  if ( (value >= 3) && name.value !== '' && comment.value === '') {
 
     button.disabled = false;
     control.classList.add('invisible');
