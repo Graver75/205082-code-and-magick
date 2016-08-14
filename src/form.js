@@ -45,89 +45,141 @@ var mark2 = document.querySelector('.review-mark-label-2');
 var mark3 = document.querySelector('.review-mark-label-3');
 var mark4 = document.querySelector('.review-mark-label-4');
 var mark5 = document.querySelector('.review-mark-label-5');
+var mark1input = document.querySelector('#review-mark-1');
+var mark2input = document.querySelector('#review-mark-2');
+var mark3input = document.querySelector('#review-mark-3');
+var mark4input = document.querySelector('#review-mark-4');
+var mark5input = document.querySelector('#review-mark-5');
 
+/*Очистка полей автозаполнения браузера*/
+mark5input.checked = true;
+name.value = '';
+comment.value = '';
+button.disabled = true;
+controlComment.classList.add('invisible');
 
-button.setAttribute('disabled', 'disabled');
-
-
-name.onchange = function() {
+name.onchange = function () {
   listenInputs();
 }
-comment.onchange = function() {
+comment.onchange = function () {
   listenInputs();
 }
 mark1.onclick = function () {
   listenInputs(1);
 }
-mark2.onclick = function() {
+mark2.onclick = function () {
   listenInputs(2);
 }
 mark3.onclick = function () {
   listenInputs(3);
 }
-mark4.onclick = function() {
+mark4.onclick = function () {
   listenInputs(4);
 }
-mark5.onclick = function() {
+mark5.onclick = function () {
   listenInputs(5);
 }
 
 
-function listenInputs(number) {
 
-  if (number < 3) {
 
-    if (name.value != '') {
 
-      controlName.classList.add('invisible');
-      button.disabled = true;
+function listenInputs(value) {
 
-    } else {
+  if (name.value != '') {
 
-      controlName.classList.remove('invisible');
-
-    }
-
-    if (comment.value != '') {
-
-      controlComment.classList.add('invisible');
-      button.disabled = true;
-
-    } else {
-
-      controlComment.classList.remove('invisible');
-
-    }
-
-    if (name.value != '' && comment.value != '') {
-
-      control.classList.add('invisible');
-      button.disabled = false;
-
-    } else {
-
-      control.classList.remove('invisible');
-      button.disabled = true;
-
-    }
+    button.disabled = true;
+    controlName.classList.add('invisible');
 
   } else {
 
-    if (name.value != '') {
+    button.disabled = true;
+    controlName.classList.remove('invisible');
 
-      control.classList.add('invisible');
-      button.disabled = false;
+  }
 
-    } else {
+  if (comment.value != '') {
 
-      control.classList.remove('invisible');
-      controlComment.classList.add('invisible');
-      controlName.classList.remove('invisible');
+    button.disabled = true;
+    controlComment.classList.add('invisible');
 
-    }
+  } else {
+
+    button.disabled = true;
+    controlComment.classList.remove('invisible');
+
+  }
+  if ( (value >= 3) && name.value != '' && comment.value === '') {
+
+    button.disabled = false;
+    control.classList.add('invisible');
+    return;
+
+  } else {
+
+    button.disabled = true;
+    control.classList.remove('invisible');
+
+  }
+  if ( (value >=3) && name.value === '' && comment.value === '') {
+
+    button.disabled = true;
+    control.classList.remove('invisible');
+    controlComment.classList.add('invisible');
+    controlName.classList.remove('invisible');
+
+  }
+
+  if ( (value < 3) && name.value != '' && comment.value != '' ) {
+
+    control.classList.add('invisible');
+    button.disabled = false;
+    return;
+
+  } else {
+
+    control.classList.remove('invisible');
+    button.disabled = true;
+
+  }
+  if ( (value >= 3) && name.value != '' )  {
+
+    control.classList.add('invisible');
+    button.disabled = false;
+    return;
+
+  } else {
+
+    control.classList.remove('invisible');
+    button.disabled = true;
 
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
