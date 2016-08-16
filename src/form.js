@@ -54,47 +54,35 @@ button.disabled = true;
 controlComment.classList.add('invisible');
 
 name.onchange = function() {
-
   listenInputs();
-
-};
+}
 comment.onchange = function() {
-
   listenInputs();
-
 };
 
 mark1.onclick = function() {
-
   listenInputs(1);
-
 };
 
 mark2.onclick = function() {
-
   listenInputs(2);
-
 };
 
 mark3.onclick = function() {
-
   listenInputs(3);
-
 };
 
 mark4.onclick = function() {
-
   listenInputs(4);
-
 };
 
 mark5.onclick = function() {
-
   listenInputs(5);
-
 };
 
 function listenInputs(value) {
+
+  button.disabled = false;
 
   if (name.value) {
 
@@ -107,7 +95,6 @@ function listenInputs(value) {
     controlName.classList.remove('invisible');
 
   }
-
   if (comment.value) {
 
     button.disabled = true;
@@ -139,7 +126,6 @@ function listenInputs(value) {
     controlName.classList.remove('invisible');
 
   }
-
   if ( (value < 3) && name.value && comment.value) {
 
     control.classList.add('invisible');
