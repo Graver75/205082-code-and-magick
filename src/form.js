@@ -55,7 +55,7 @@ controlComment.classList.add('invisible');
 
 name.onchange = function() {
   listenInputs();
-}
+};
 comment.onchange = function() {
   listenInputs();
 };
