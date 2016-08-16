@@ -46,7 +46,6 @@ var mark3 = document.querySelector('.review-mark-label-3');
 var mark4 = document.querySelector('.review-mark-label-4');
 var mark5 = document.querySelector('.review-mark-label-5');
 var mark5input = document.querySelector('#review-mark-5');
-
 /*Очистка полей автозаполнения браузера*/
 mark5input.checked = true;
 name.value = '';
@@ -59,7 +58,6 @@ name.onchange = function() {
   listenInputs();
 
 };
-
 comment.onchange = function() {
 
   listenInputs();
@@ -96,10 +94,9 @@ mark5.onclick = function() {
 
 };
 
-
 function listenInputs(value) {
 
-  if (name.value !== '') {
+  if (name.value) {
 
     button.disabled = true;
     controlName.classList.add('invisible');
@@ -111,7 +108,7 @@ function listenInputs(value) {
 
   }
 
-  if (comment.value !== '') {
+  if (comment.value) {
 
     button.disabled = true;
     controlComment.classList.add('invisible');
@@ -122,7 +119,7 @@ function listenInputs(value) {
     controlComment.classList.remove('invisible');
 
   }
-  if ( (value >= 3) && name.value !== '' && comment.value === '') {
+  if ( (value >= 3) && name.value && comment.value) {
 
     button.disabled = false;
     control.classList.add('invisible');
@@ -134,7 +131,7 @@ function listenInputs(value) {
     control.classList.remove('invisible');
 
   }
-  if ( (value >= 3) && name.value === '' && comment.value === '') {
+  if ( (value >= 3) && !name.value && !comment.value) {
 
     button.disabled = true;
     control.classList.remove('invisible');
@@ -143,7 +140,7 @@ function listenInputs(value) {
 
   }
 
-  if ( (value < 3) && name.value !== '' && comment.value !== '' ) {
+  if ( (value < 3) && name.value && comment.value) {
 
     control.classList.add('invisible');
     button.disabled = false;
@@ -155,7 +152,7 @@ function listenInputs(value) {
     button.disabled = true;
 
   }
-  if ( (value >= 3) && name.value !== '' ) {
+  if ( (value >= 3) && name.value) {
 
     control.classList.add('invisible');
     button.disabled = false;
@@ -167,32 +164,4 @@ function listenInputs(value) {
     button.disabled = true;
 
   }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
