@@ -166,8 +166,8 @@ function listenInputs(value) {
   }
   if (controlName.classList.contains('invisible') && controlComment.classList.contains('invisible')) {
 
-	  control.classList.add('invisible');
-	  button.disabled = false;
+    control.classList.add('invisible');
+    button.disabled = false;
 
   }
 
