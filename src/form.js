@@ -45,6 +45,10 @@ var mark2 = document.querySelector('.review-mark-label-2');
 var mark3 = document.querySelector('.review-mark-label-3');
 var mark4 = document.querySelector('.review-mark-label-4');
 var mark5 = document.querySelector('.review-mark-label-5');
+var mark1input = document.querySelector('#review-mark-1');
+var mark2input = document.querySelector('#review-mark-2');
+var mark3input = document.querySelector('#review-mark-3');
+var mark4input = document.querySelector('#review-mark-4');
 var mark5input = document.querySelector('#review-mark-5');
 /*Очистка полей автозаполнения браузера*/
 mark5input.checked = true;
@@ -81,79 +85,141 @@ mark5.onclick = function() {
 };
 
 function listenInputs(value) {
+  control.classList.remove('invisible');
+  controlName.classList.remove('invisible');
+  controlComment.classList.remove('invisible');
+  button.disabled = true;
 
-  button.disabled = false;
 
   if (name.value) {
 
-    button.disabled = true;
     controlName.classList.add('invisible');
 
   } else {
 
-    button.disabled = true;
     controlName.classList.remove('invisible');
 
   }
   if (comment.value) {
 
-    button.disabled = true;
     controlComment.classList.add('invisible');
 
   } else {
 
-    button.disabled = true;
     controlComment.classList.remove('invisible');
 
   }
-  if ( (value >= 3) && name.value && comment.value) {
 
-    button.disabled = false;
-    control.classList.add('invisible');
-    return;
+  if ((value >=3) && (mark2input.checked || mark1input.checked)) {
 
-  } else {
+    if(name.value) {
 
-    button.disabled = true;
-    control.classList.remove('invisible');
+      control.classList.add('invisible');
+      button.disabled = false;
+      return;
+
+    } else {
+
+      controlComment.classList.add('invisible');
+      controlName.classList.remove('invisible');
+
+    }
 
   }
-  if ( (value >= 3) && !name.value && !comment.value) {
+  if ((value < 2 ) && (mark3input.checked || mark4input.checked || mark5input.checked)) {
 
-    button.disabled = true;
-    control.classList.remove('invisible');
+    if(name.value) {
+
+      controlName.classList.add('invisible');
+
+    } else {
+
+      controlComment.classList.remove('invisible');
+
+    }
+    if (comment.value) {
+
+      controlComment.classList.add('invisible');
+
+    } else {
+
+      controlComment.classList.remove('invisible');
+
+    }
+
+    if (name.value && comment.value) {
+
+      control.classList.add('invisible');
+      button.disabled = false;
+      return;
+
+    }
+
+  }
+
+  if ((value < 2) && (mark3input.checked || mark4input.checked || mark5input.checked) && (!name.value || !comment.value)) {
+
+    if(name.value) {
+
+      controlName.classList.add('invisible');
+
+    } else {
+
+      controlComment.classList.remove('invisible');
+
+    }
+    if (comment.value) {
+
+      controlComment.classList.add('invisible');
+
+    } else {
+
+      controlComment.classList.remove('invisible');
+
+    }
+    if (!comment.value && !name.value) {
+
+      control.classList.remove('invisible');
+      controlName.classList.remove('invisible');
+      controlComment.classList.remove('invisible');
+
+    }
+
+  }
+
+  if (((value >= 3) || (mark3input.checked || mark4input.checked || mark5input.checked)) && name.value) {
+
+    if (value < 3 && !comment.value) {
+
+      controlComment.classList.remove('invisible');
+      return;
+
+    }
+
+    control.classList.add('invisible');
+    button.disabled = false;
+    return;
+
+  }
+
+  if (((value < 2) || (mark1input.checked || mark2input.checked || mark3input.checked)) && name.value && comment.value) {
+
+    control.classList.add('invisible');
+    button.disabled = false;
+    return;
+
+  }
+
+  if ((value >= 3) &&(mark3input.checked || mark4input.checked || mark5input.checked) && !name.value) {
+
     controlComment.classList.add('invisible');
-    controlName.classList.remove('invisible');
 
   }
-  if ( (value < 3) && name.value && comment.value) {
 
-    control.classList.add('invisible');
-    button.disabled = false;
-    return;
+  if ((value < 3) && (mark3input.checked || mark4input.checked || mark5input.checked) && name.value && !comment.value) {
 
-  } else {
-
-    control.classList.remove('invisible');
-    button.disabled = true;
-
-  }
-  if ( (value >= 3) && name.value) {
-
-    control.classList.add('invisible');
-    button.disabled = false;
-    return;
-
-  } else {
-
-    control.classList.remove('invisible');
-    button.disabled = true;
-
-  }
-  if (controlName.classList.contains('invisible') && controlComment.classList.contains('invisible')) {
-
-    control.classList.add('invisible');
-    button.disabled = false;
+    controlComment.classList.remove('invisible');
+    controlName.classList.add('invisible');
 
   }
 
