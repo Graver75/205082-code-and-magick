@@ -110,7 +110,7 @@ function listenInputs(value) {
 
   }
 
-  if ((value >=3) && (mark2input.checked || mark1input.checked)) {
+  if ((value >= 3) && (mark2input.checked || mark1input.checked)) {
 
     if(name.value) {
 
@@ -210,7 +210,7 @@ function listenInputs(value) {
 
   }
 
-  if ((value >= 3) &&(mark3input.checked || mark4input.checked || mark5input.checked) && !name.value) {
+  if ((value >= 3) && (mark3input.checked || mark4input.checked || mark5input.checked) && !name.value) {
 
     controlComment.classList.add('invisible');
 
