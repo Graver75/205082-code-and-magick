@@ -200,13 +200,23 @@ mark5.onclick = function() {
 button.onsubmit = function() {
 
   browserCookies.set('review-name', name.value, {expires: expireDays()});
-  browserCookies.set('review-mark', findMark(), {expires: expireDays()});
+  browserCookies.set('review-mark', String(findMark()), {expires: expireDays()});
 
 };
 
 function findMark() {
 
-  //var mark = document.getElementsByName('review-mark');
+  var mark = document.getElementsByName('review-mark');
+
+  for (var i = 0; i < mark.length - 1; i++) {
+
+    if (mark[i].checked) {
+
+      return mark[i].value;
+
+    }
+
+  }
 
 }
 
@@ -243,7 +253,6 @@ function listenInputs(value) {
       controlComment.classList.remove('invisible');
 
     }
-
 
   }
 
