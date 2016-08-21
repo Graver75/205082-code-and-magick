@@ -206,7 +206,7 @@ button.onsubmit = function() {
 
 function findMark() {
 
-  var mark = document.getElementsByName('review-mark');
+  //var mark = document.getElementsByName('review-mark');
 
 }
 
@@ -218,8 +218,8 @@ function listenInputs(value) {
 
     button.disabled = true;
 
-    if (name.value) controlName.classList.add('invisible');
-    if (comment.value) controlComment.classList.add('invisible');
+    if (name.value) { controlName.classList.add('invisible'); }
+    if (comment.value) { controlComment.classList.add('invisible'); }
 
   } else {
 
