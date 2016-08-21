@@ -197,40 +197,43 @@ mark4.onclick = function() {
 mark5.onclick = function() {
   listenInputs(5);
 };
+button.onsubmit = function() {
+
+  browserCookies.set('review-name', name.value, {expires: expireDays()});
+  browserCookies.set('review-mark', findMark(), {expires: expireDays()});
+
+};
+
+function findMark() {
+
+  var mark = document.getElementsByName('review-mark');
+
+}
 
 function listenInputs(value) {
 
   button.disabled = false;
 
-  if (name.value) {
+  if (name.value || comment.value) {
 
     button.disabled = true;
-    controlName.classList.add('invisible');
+
+    if (name.value) controlName.classList.add('invisible');
+    if (comment.value) controlComment.classList.add('invisible');
 
   } else {
 
     button.disabled = true;
-    controlName.classList.remove('invisible');
+
+    if (!name.value) controlName.classList.remove('invisible');
+    if (!comment.value) controlComment.classList.remove('invisible');
 
   }
-  if (comment.value) {
 
-    button.disabled = true;
-    controlComment.classList.add('invisible');
-
-  } else {
-
-    button.disabled = true;
-    controlComment.classList.remove('invisible');
-
-  }
   if ( (value >= 3) && name.value && comment.value) {
 
     button.disabled = false;
     control.classList.add('invisible');
-
-    browserCookies.set('review-name', name.value, {expires: expireDays()});
-    browserCookies.set('review-mark', String(value), {expires: expireDays()});
 
     return;
 
@@ -253,9 +256,6 @@ function listenInputs(value) {
     control.classList.add('invisible');
     button.disabled = false;
 
-    browserCookies.set('review-name', name.value, {expires: expireDays()});
-    browserCookies.set('review-mark', String(value), {expires: expireDays()});
-
     return;
 
   } else {
@@ -268,9 +268,6 @@ function listenInputs(value) {
 
     control.classList.add('invisible');
     button.disabled = false;
-
-    browserCookies.set('review-name', name.value, {expires: expireDays()});
-    browserCookies.set('review-mark', String(value), {expires: expireDays()});
 
     return;
 
@@ -293,14 +290,6 @@ function listenInputs(value) {
     controlName.classList.add('invisible');
     control.classList.add('invisible');
 
-    browserCookies.set('review-name', name.value, {expires: expireDays()});
-
-    if (typeof value === 'number') {
-
-      browserCookies.set('review-mark', String(value), {expires: expireDays()});
-
-    }
-
     button.disabled = false;
     return;
 
@@ -309,44 +298,6 @@ function listenInputs(value) {
 
     control.classList.add('invisible');
     button.disabled = false;
-
-    if (value) {
-
-      browserCookies.set('review-mark', String(value), {expires: expireDays()});
-
-    } else {
-
-      if (mark1input.checked) {
-
-        browserCookies.set('review-mark', String(1), {expires: expireDays()});
-
-      }
-
-      if (mark2input.checked) {
-
-        browserCookies.set('review-mark', String(2), {expires: expireDays()});
-
-      }
-
-      if (mark3input.checked) {
-
-        browserCookies.set('review-mark', String(3), {expires: expireDays()});
-
-      }
-
-      if (mark4input.checked) {
-
-        browserCookies.set('review-mark', String(4), {expires: expireDays()});
-
-      }
-
-      if (mark5input.checked) {
-
-        browserCookies.set('review-mark', String(5), {expires: expireDays()});
-
-      }
-
-    }
 
   }
 
