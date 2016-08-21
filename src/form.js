@@ -226,15 +226,24 @@ function listenInputs(value) {
     if (comment.value) {
 
       controlComment.classList.add('invisible');
-      
+
     }
 
   } else {
 
     button.disabled = true;
 
-    if (!name.value) controlName.classList.remove('invisible');
-    if (!comment.value) controlComment.classList.remove('invisible');
+    if (!name.value) {
+
+      controlName.classList.remove('invisible');
+
+    }
+    if (!comment.value) {
+
+      controlComment.classList.remove('invisible');
+
+    }
+
 
   }
 
