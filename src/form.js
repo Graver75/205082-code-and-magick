@@ -63,7 +63,6 @@ name.onchange = function() {
 comment.onchange = function() {
   listenInputs();
 };
-
 mark1.onclick = function() {
   listenInputs(1);
 };
