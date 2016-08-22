@@ -77,7 +77,7 @@ function findMarks() {
       return String(mark[i].value);
     }
   }
-  return undefined;
+  return false;
 
 }
 (function fillInputs() {
