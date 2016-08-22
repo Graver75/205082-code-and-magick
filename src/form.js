@@ -61,6 +61,7 @@ var mark2input = document.querySelector('#review-mark-2');
 var mark3input = document.querySelector('#review-mark-3');
 var mark4input = document.querySelector('#review-mark-4');
 var mark5input = document.querySelector('#review-mark-5');
+var mark = document.getElementsByName('review-mark');
 
 button.disabled = true;
 button.onsubmit = function() {
@@ -68,10 +69,33 @@ button.onsubmit = function() {
   browserCookies.set('review-name', name.value, {expires: expireDays()});
   browserCookies.set('review-mark', findMarks(), {expires: expireDays()});
 
-}
+};
 function findMarks() {
 
-  
+  for (var i = 0; i < mark.length - 1; i++) {
+    if (mark[i].checked) {
+      return String(mark[i].value);
+    }
+  }
+
+};
+(function fillInputs() {
+
+  if (browserCookies.get('review-name') || browserCookies.get('review-mark')) {
+
+    if (browserCookies.get('review-name')) {
+      name.value = browserCookies.get('review-name');
+    }
+    if (browserCookies.get('review-mark')) {
+      checkMark(browserCookies.get('review-mark'));
+    }
+  }
+
+})();
+function checkMark(value) {
+
+  value = parseInt(value, 10);
+  mark[value].checked = true;
 
 }
 
