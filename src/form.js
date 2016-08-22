@@ -1,4 +1,5 @@
 'use strict';
+var browserCookies = require('browser-cookies');
 
 window.form = (function() {
   var formContainer = document.querySelector('.overlay-container');
@@ -63,6 +64,12 @@ var mark5input = document.querySelector('#review-mark-5');
 
 button.disabled = true;
 button.onsubmit = function() {
+
+  browserCookies.set('review-name', name.value, {expires: expireDays()});
+  browserCookies.set('review-mark', findMarks(), {expires: expireDays()});
+
+}
+function findMarks() {
 
   
 
