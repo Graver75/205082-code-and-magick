@@ -33,6 +33,21 @@ window.form = (function() {
   return form;
 })();
 
+var expireDays = function() {
+
+  var now = new Date();
+  var grace = new Date(now.getFullYear(), 11, 9);
+  var days;
+
+  if (now.getTime() > grace.getTime()) {
+    days = parseInt(365 - (now.getTime() - grace.getTime()) / 1000 / 60 / 60 / 24, 10);
+  } else {
+    days = parseInt(365 - (grace.getTime() - now.getTime()) / 1000 / 60 / 60 / 24, 10);
+  }
+  return days;
+
+};
+
 
 var name = document.querySelector('#review-name');
 var comment = document.querySelector('#review-text');
@@ -47,6 +62,11 @@ var mark4input = document.querySelector('#review-mark-4');
 var mark5input = document.querySelector('#review-mark-5');
 
 button.disabled = true;
+button.onsubmit = function() {
+
+  
+
+}
 
 name.onchange = function() {
   listenInputs();
