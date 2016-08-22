@@ -77,6 +77,7 @@ function findMarks() {
       return String(mark[i].value);
     }
   }
+  return;
 
 }
 (function fillInputs() {
@@ -174,7 +175,7 @@ function listenInputs() {
         name.classList.remove('invisible');
       }
       if (!comment.value) {
-        comment.classList,remove('invisible');
+        comment.classList.remove('invisible');
       }
 
     }
