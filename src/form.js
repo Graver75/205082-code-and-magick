@@ -96,6 +96,7 @@ function checkMark(value) {
   mark[value].checked = true;
 }
 
+listenInputs(); // первичыный осмотр полей
 name.onchange = function() {
   listenInputs();
 };
