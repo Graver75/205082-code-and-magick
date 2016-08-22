@@ -78,7 +78,7 @@ function findMarks() {
     }
   }
 
-};
+}
 (function fillInputs() {
 
   if (browserCookies.get('review-name') || browserCookies.get('review-mark')) {
@@ -168,12 +168,16 @@ function listenInputs() {
 
   } else {
 
-   if (!name.value) {
-     controlName.classList.remove('invisible');
-   }
-   if (!comment.value) {
-     controlComment.classList.remove('invisible');
-   }
+    if (!name.value || !comment.value) {
+
+      if (!name.value) {
+        name.classList.remove('invisible');
+      }
+      if (!comment.value) {
+        comment.classList,remove('invisible');
+      }
+
+    }
 
   }
 
