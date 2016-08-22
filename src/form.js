@@ -72,18 +72,16 @@ button.onsubmit = function() {
 };
 function findMarks() {
 
-  for (var i = 0; i < mark.length - 1; i++) {
-    if (mark[i].checked) {
-      return String(mark[i].value);
-    }
+  function isElementChecked(element) {
+    return element.checked;
   }
-  return false;
+  var filtered =  mark.filter(isElementChecked);
+  return String(filtered.value);
 
 }
 (function fillInputs() {
 
   if (browserCookies.get('review-name') || browserCookies.get('review-mark')) {
-
     if (browserCookies.get('review-name')) {
       name.value = browserCookies.get('review-name');
     }
@@ -94,10 +92,8 @@ function findMarks() {
 
 })();
 function checkMark(value) {
-
   value = parseInt(value, 10);
   mark[value].checked = true;
-
 }
 
 name.onchange = function() {
