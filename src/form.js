@@ -75,7 +75,7 @@ function findMarks() {
   function isElementChecked(element) {
     return element.checked;
   }
-  var filtered =  mark.filter(isElementChecked);
+  var filtered = mark.filter(isElementChecked);
   return String(filtered.value);
 
 }
