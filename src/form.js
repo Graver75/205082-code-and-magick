@@ -41,9 +41,10 @@ var expireDays = function() {
   var days;
 
   if (now.getTime() > grace.getTime()) {
-    days = parseInt(365 - (now.getTime() - grace.getTime()) / 1000 / 60 / 60 / 24, 10);
+    days = parseInt((now.getTime() - grace.getTime()) / 1000 / 60 / 60 / 24, 10);
   } else {
-    days = parseInt(365 - (grace.getTime() - now.getTime()) / 1000 / 60 / 60 / 24, 10);
+    grace.setFullYear(now.getFullYear() - 1);
+    days = parseInt((now.getTime() - grace.getTime()) / 1000 / 60 / 60 / 24, 10);
   }
   return days;
 
