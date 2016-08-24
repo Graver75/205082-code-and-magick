@@ -64,7 +64,7 @@ var mark5input = document.querySelector('#review-mark-5');
 var mark = document.getElementsByName('review-mark');
 
 button.disabled = true;
-button.onsubmit = function() {
+button.onclick = function() {
 
   browserCookies.set('review-name', name.value, {expires: expireDays()});
   browserCookies.set('review-mark', findMarks(), {expires: expireDays()});
