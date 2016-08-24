@@ -81,13 +81,11 @@ function findMarks() {
 }
 (function fillInputs() {
 
-  if (browserCookies.get('review-name') || browserCookies.get('review-mark')) {
-    if (browserCookies.get('review-name')) {
-      name.value = browserCookies.get('review-name');
-    }
-    if (browserCookies.get('review-mark')) {
-      checkMark(browserCookies.get('review-mark'));
-    }
+  if (browserCookies.get('review-name')) {
+    name.value = browserCookies.get('review-name');
+  }
+  if (browserCookies.get('review-mark')) {
+    checkMark(browserCookies.get('review-mark'));
   }
 
 })();
