@@ -62,9 +62,10 @@ var mark3input = document.querySelector('#review-mark-3');
 var mark4input = document.querySelector('#review-mark-4');
 var mark5input = document.querySelector('#review-mark-5');
 var mark = document.getElementsByName('review-mark');
+var form = document.querySelector('.review-form');
 
 button.disabled = true;
-name.onsubmit = function() {
+form.onsubmit = function() {
 
   browserCookies.set('review-name', name.value, {expires: expireDays()});
   browserCookies.set('review-mark', findMarks(), {expires: expireDays()});
