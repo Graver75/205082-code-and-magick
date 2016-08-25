@@ -159,7 +159,7 @@ function listenInputs(checker) {
     }
 
   } else {
-    comment.value.add('invisible');
+    controlComment.classList.add('invisible');
     if (name.value) {
       control.classList.add('invisible');
       button.disabled = false;
