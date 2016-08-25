@@ -104,10 +104,10 @@ comment.onchange = function() {
   listenInputs();
 };
 mark1input.onchange = function() {
-  listenInputs();
+  listenInputs(true);
 };
 mark2input.onchange = function() {
-  listenInputs();
+  listenInputs(true);
 };
 mark3input.onchange = function() {
   listenInputs();
@@ -119,7 +119,7 @@ mark5input.onchange = function() {
   listenInputs();
 };
 
-function listenInputs() {
+function listenInputs(checker) {
   control.classList.remove('invisible');
   controlName.classList.remove('invisible');
   controlComment.classList.remove('invisible');
@@ -139,44 +139,33 @@ function listenInputs() {
     }
   }
 
-  if (name.value || comment.value) {
+  if (checker) {
 
     if (name.value) {
       controlName.classList.add('invisible');
-      if (mark3input.checked || mark4input.checked || mark5input.checked) {
-
-        controlComment.classList.add('invisible');
-        control.classList.add('invisible');
-        button.disabled = false;
-        return;
-
-      }
-      if (comment.value && (mark1input.checked || mark2input.checked)) {
-
-        controlComment.classList.add('invisible');
-        control.classList.add('invisible');
-        button.disabled = false;
-        return;
-
-      }
+    } else {
+      controlName.classList.remove('invisible');
     }
     if (comment.value) {
       controlComment.classList.add('invisible');
+    } else {
+      controlComment.classList.remove('invisible');
+    }
+
+    if (name.value && comment.value) {
+      control.classList.add('invisible');
+      button.disabled = false;
+      return;
     }
 
   } else {
-
-    if (!name.value || !comment.value) {
-
-      if (!name.value) {
-        name.classList.remove('invisible');
-      }
-      if (!comment.value) {
-        comment.classList.remove('invisible');
-      }
-
+    comment.value.add('invisible');
+    if (name.value) {
+      control.classList.add('invisible');
+      button.disabled = false;
+      return;
+    } else {
+      controlName.classList.remove('invisible');
     }
-
   }
-
 }
