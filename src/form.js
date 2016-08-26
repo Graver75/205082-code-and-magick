@@ -62,8 +62,8 @@ var mark2input = document.querySelector('#review-mark-2');
 var mark3input = document.querySelector('#review-mark-3');
 var mark4input = document.querySelector('#review-mark-4');
 var mark5input = document.querySelector('#review-mark-5');
-var mark = document.getElementsByName('review-mark');
 var form = document.querySelector('.review-form');
+var mark = form['review-mark'];
 
 button.disabled = true;
 form.onsubmit = function() {
@@ -104,10 +104,10 @@ comment.onchange = function() {
   listenInputs();
 };
 mark1input.onchange = function() {
-  listenInputs(true);
+  listenInputs();
 };
 mark2input.onchange = function() {
-  listenInputs(true);
+  listenInputs();
 };
 mark3input.onchange = function() {
   listenInputs();
@@ -119,28 +119,22 @@ mark5input.onchange = function() {
   listenInputs();
 };
 
-function listenInputs(checker) {
+function listenInputs() {
   control.classList.remove('invisible');
   controlName.classList.remove('invisible');
   controlComment.classList.remove('invisible');
   button.disabled = true;
 
-  if (mark3input.checked || mark4input.checked || mark5input.checked) {
+  if (+mark.value >= 3) {
     if (name.value) {
-
-      controlComment.classList.add('invisible');
       control.classList.add('invisible');
       button.disabled = false;
       return;
-
     } else {
       controlComment.classList.add('invisible');
       return;
     }
-  }
-
-  if (checker) {
-
+  } else {
     if (name.value) {
       controlName.classList.add('invisible');
     } else {
@@ -151,21 +145,10 @@ function listenInputs(checker) {
     } else {
       controlComment.classList.remove('invisible');
     }
-
     if (name.value && comment.value) {
       control.classList.add('invisible');
       button.disabled = false;
       return;
-    }
-
-  } else {
-    controlComment.classList.add('invisible');
-    if (name.value) {
-      control.classList.add('invisible');
-      button.disabled = false;
-      return;
-    } else {
-      controlName.classList.remove('invisible');
     }
   }
 }
