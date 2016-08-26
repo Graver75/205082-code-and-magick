@@ -114,17 +114,22 @@ function listenInputs() {
   if (name.value) {
     controlName.classList.add('invisible');
     if (+mark.value >= 3) {
+      controlComment.classList.add('invisible');
       control.classList.add('invisible');
       button.disabled = false;
       return;
-    } else {
-      if (comment.value) {
-        control.classList.add('invisible');
-        button.disabled = false;
-        return;
-      } else {
-        controlComment.classList.remove('invisible');
-      }
     }
+  } else {
+    if (+mark.value >= 3) {
+      controlComment.classList.add('invisible');
+    }
+    return;
+  }
+  if (comment.value && +mark.value <= 3) {
+    control.classList.add('invisible');
+    button.disabled = false;
+    return;
+  } else {
+    return;
   }
 }
