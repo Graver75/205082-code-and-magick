@@ -122,7 +122,7 @@ function listenInputs() {
     }
   }
   if (comment.value && +mark.value <= 3) {
-    control.classList.add('invisible');
+    controlComment.classList.add('invisible');
   }
   if (controlName.classList.contains('invisible') && (controlComment.classList.contains('invisible') || +mark.value >= 3)) {
     control.classList.add('invisible');
