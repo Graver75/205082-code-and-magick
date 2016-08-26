@@ -111,30 +111,20 @@ function listenInputs() {
   controlComment.classList.remove('invisible');
   button.disabled = true;
 
-  if (+mark.value >= 3) {
-    if (name.value) {
+  if (name.value) {
+    controlName.classList.add('invisible');
+    if (+mark.value >= 3) {
       control.classList.add('invisible');
       button.disabled = false;
       return;
     } else {
-      controlComment.classList.add('invisible');
-      return;
-    }
-  } else {
-    if (name.value) {
-      controlName.classList.add('invisible');
-    } else {
-      controlName.classList.remove('invisible');
-    }
-    if (comment.value) {
-      controlComment.classList.add('invisible');
-    } else {
-      controlComment.classList.remove('invisible');
-    }
-    if (name.value && comment.value) {
-      control.classList.add('invisible');
-      button.disabled = false;
-      return;
+      if (comment.value) {
+        control.classList.add('invisible');
+        button.disabled = false;
+        return;
+      } else {
+        controlComment.classList.remove('invisible');
+      }
     }
   }
 }
