@@ -82,11 +82,6 @@ form.onsubmit = function() {
   }
 
 })();
-function checkMark(value) {
-  value = parseInt(value, 10);
-  mark[value].checked = true;
-}
-
 listenInputs(); // первичыный осмотр полей
 name.onchange = function() {
   listenInputs();
