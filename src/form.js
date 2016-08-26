@@ -69,25 +69,16 @@ button.disabled = true;
 form.onsubmit = function() {
 
   browserCookies.set('review-name', name.value, {expires: expireDays()});
-  browserCookies.set('review-mark', findMarks(), {expires: expireDays()});
+  browserCookies.set('review-mark', mark.value, {expires: expireDays()});
 
 };
-function findMarks() {
-
-  function isElementChecked(element) {
-    return element.checked;
-  }
-  var filtered = mark.filter(isElementChecked);
-  return String(filtered.value);
-
-}
 (function fillInputs() {
 
   if (browserCookies.get('review-name')) {
     name.value = browserCookies.get('review-name');
   }
   if (browserCookies.get('review-mark')) {
-    checkMark(browserCookies.get('review-mark'));
+    mark.value = (browserCookies.get('review-mark'));
   }
 
 })();
