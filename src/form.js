@@ -82,7 +82,7 @@ form.onsubmit = function() {
   }
 
 })();
-listenInputs(); // первичыный осмотр полей
+//listenInputs(); // первичыный осмотр полей
 name.onchange = function() {
   listenInputs();
 };
@@ -106,7 +106,29 @@ mark5input.onchange = function() {
 };
 
 function listenInputs() {
-  control.classList.remove('invisible');
+  control.classList.add('invisible');
+  controlName.classList.add('invisible');
+  controlComment.classList.add('invisible');
+  button.disabled = false;
+  var nameValid = true;
+  var commentValid = true;
+  //var numberValid = true;
+  //var surnameValid = true;
+  if (!name.value) {
+    controlName.classList.remove('invisible');
+    nameValid = false;
+  }
+  if (+mark.value < 3 && !comment.value) {
+    controlComment.classList.remove('invisible');
+    commentValid = false;
+  }
+  if (nameValid && commentValid) {
+    control.classList.add('invisible');
+  } else {
+    button.disabled = true;
+  }
+
+  /*control.classList.remove('invisible');
   controlName.classList.remove('invisible');
   controlComment.classList.remove('invisible');
   button.disabled = true;
@@ -128,5 +150,5 @@ function listenInputs() {
     control.classList.add('invisible');
     button.disabled = false;
     return;
-  }
+  }*/
 }
