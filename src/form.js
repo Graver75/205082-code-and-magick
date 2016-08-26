@@ -115,21 +115,18 @@ function listenInputs() {
     controlName.classList.add('invisible');
     if (+mark.value >= 3) {
       controlComment.classList.add('invisible');
-      control.classList.add('invisible');
-      button.disabled = false;
-      return;
     }
   } else {
     if (+mark.value >= 3) {
       controlComment.classList.add('invisible');
     }
-    return;
   }
   if (comment.value && +mark.value <= 3) {
     control.classList.add('invisible');
+  }
+  if (controlName.classList.contains('invisible') && (controlComment.classList.contains('invisible') || +mark.value >= 3)) {
+    control.classList.add('invisible');
     button.disabled = false;
-    return;
-  } else {
     return;
   }
 }
