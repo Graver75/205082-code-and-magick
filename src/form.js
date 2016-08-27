@@ -125,6 +125,7 @@ function listenInputs() {
   if (nameValid && commentValid) {
     control.classList.add('invisible');
   } else {
+    control.classList.remove('invisible');
     button.disabled = true;
   }
 
