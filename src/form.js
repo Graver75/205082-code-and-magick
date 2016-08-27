@@ -112,8 +112,6 @@ function listenInputs() {
   button.disabled = false;
   var nameValid = true;
   var commentValid = true;
-  //var numberValid = true;
-  //var surnameValid = true;
   if (!name.value) {
     controlName.classList.remove('invisible');
     nameValid = false;
@@ -128,28 +126,4 @@ function listenInputs() {
     control.classList.remove('invisible');
     button.disabled = true;
   }
-
-  /*control.classList.remove('invisible');
-  controlName.classList.remove('invisible');
-  controlComment.classList.remove('invisible');
-  button.disabled = true;
-
-  if (name.value) {
-    controlName.classList.add('invisible');
-    if (+mark.value >= 3) {
-      controlComment.classList.add('invisible');
-    }
-  } else {
-    if (+mark.value >= 3) {
-      controlComment.classList.add('invisible');
-    }
-  }
-  if (comment.value && +mark.value <= 3) {
-    controlComment.classList.add('invisible');
-  }
-  if (controlName.classList.contains('invisible') && (controlComment.classList.contains('invisible') || +mark.value >= 3)) {
-    control.classList.add('invisible');
-    button.disabled = false;
-    return;
-  }*/
 }
