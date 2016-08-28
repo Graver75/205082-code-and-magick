@@ -13,10 +13,10 @@ var load = function(url, callback, callbackName) {
   document.body.appendChild(script);
 };
 
-load(REVIEWS_LOAD_URL,function(data) {
+load(REVIEWS_LOAD_URL, function(data) {
   reviews = data;
   console.log(reviews);
-},'__jsonpCallback');
+}, '__jsonpCallback');
 
 
 
