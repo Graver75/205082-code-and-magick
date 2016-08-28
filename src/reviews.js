@@ -14,5 +14,6 @@ var load = function(url, callbackName) {
 };
 
 load(REVIEWS_LOAD_URL, '__jsonpCallback');
+console.log(reviews);
 
 
