@@ -3,13 +3,13 @@
 var REVIEWS_LOAD_URL = 'http://localhost:1506/api/reviews';
 var reviews;
 
-var load = function(url, callbackName) {
-  window[callbackName] = function(data) {
-    console.log(data);
+var load = function(url, callback) {
+  window[callback] = function(data) {
+    //текст функции?
   };
 
   var script = document.createElement('script');
-  script.src = url + '?callback=' + callbackName;
+  script.src = url + '?callback=' + callback;
   document.body.appendChild(script);
 };
 
