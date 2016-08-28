@@ -1,6 +1,7 @@
 'use strict';
 require('./game');
 require('./form');
+require('./review');
 
 (function() {
   var game = new window.Game(document.querySelector('.demo'));
