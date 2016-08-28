@@ -1,7 +1,6 @@
 'use strict';
 
 var REVIEWS_LOAD_URL = 'http://localhost:1506/api/reviews';
-var reviews;
 
 var load = function(url, callback, callbackName) {
   if (!callbackName) {
@@ -17,5 +16,5 @@ var load = function(url, callback, callbackName) {
 };
 
 load(REVIEWS_LOAD_URL, function(data) {
-  reviews = data;
+  var reviews = data;
 }, '__jsonpCallback');
