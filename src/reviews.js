@@ -5,7 +5,7 @@ var reviews;
 
 var load = function(url, callback) {
   window[callback] = function(data) {
-    //текст функции?
+    console.log(data);
   };
 
   var script = document.createElement('script');
