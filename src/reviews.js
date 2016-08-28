@@ -18,3 +18,4 @@ var load = function(url, callback, callbackName) {
 load(REVIEWS_LOAD_URL, function(data) {
   reviews = data;
 }, '__jsonpCallback');
+console.log(reviews);
