@@ -26,30 +26,31 @@ load(REVIEWS_LOAD_URL, function(data) {
 
 var showReviews = {
   getclone: function() {
-    var tmpl = templateElement.cloneNode(true);
-    tmpl = tmpl.content.querySelector('.review');
-    return tmpl;
+    var template = templateElement.cloneNode(true);
+    template = template.content.querySelector('.review');
+    return template;
   },
   placing: function(element) {
     filters.classList.add('invisible');
-    var tmpl = this.getclone();
-    console.dir(tmpl);
-    tmpl.querySelector('.review-text').textContent = element.description;
-    tmpl.querySelector('.review-rating').style.width = 40 * element.rating + 'px';
-    tmpl.querySelector('.review-rating').style.maxWidth = '200px';
+    var template = this.getclone();
+    console.dir(template);
+    template.querySelector('.review-text').textContent = element.description;
+    var rating = template.querySelector('.review-rating');
+    rating.style.width = 40 * element.rating + 'px';
+    rating.style.maxWidth = '200px';
 
     var img = new Image(124, 124);
     img.onload = function() {
-      tmpl.querySelector('.review-author').src = element.author.picture;
+      template.querySelector('.review-author').src = element.author.picture;
     };
     img.onerror = function() {
       console.log('Error loading img ' + img.src);
-      tmpl.querySelector('.review-author').classList.add('review-load-failure');
+      template.querySelector('.review-author').classList.add('review-load-failure');
     };
     img.src = element.author.picture;
     console.dir(img);
 
-    reviewsList.appendChild(tmpl);
+    reviewsList.appendChild(template);
   }
 };
 filters.classList.remove('invisible');
