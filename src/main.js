@@ -2,9 +2,10 @@
 
 define([
   './game',
-  './form'
-], function (game, form) {
-
+  './form',
+  './reviews'
+], function (game, form, reviews) {
+  window.Game = game();
 });
 
 
