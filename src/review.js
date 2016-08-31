@@ -28,4 +28,4 @@ function drawReviews(element) {
 
 define(function() {
   return drawReviews;
-})
+});
