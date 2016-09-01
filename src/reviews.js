@@ -11,14 +11,12 @@ define([
   load(REVIEWS_LOAD_URL, function(data) {
     dataReviews = data;
     console.log(dataReviews);
+
+    dataReviews = dataReviews.map(function(element) {
+      review(element);
+    });
   }, '__jsonpCallBack');
 
-  dataReviews = dataReviews.map(function(dataReview) {
-    review(dataReview);
-  });
-  dataReviews.forEach(function(elem) {
-    reviewsList.appendChild(elem);
-  });
   filters.classList.remove('invisible');
   return dataReviews;
 });

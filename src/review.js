@@ -2,6 +2,8 @@
 
 define(function() {
   return function(element) {
+    var reviewsList = document.querySelector('.reviews-list');
+    var filters = document.querySelector('.reviews-filter');
     filters.classList.add('invisible');
 
     var templateElement = document.querySelector('#review-template');
@@ -25,5 +27,7 @@ define(function() {
       template.querySelector('.review-author').classList.add('review-load-failure');
     };
     img.src = element.author.picture;
+
+    reviewsList.appendChild(template);
   }
 });

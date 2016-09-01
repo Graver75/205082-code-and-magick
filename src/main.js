@@ -6,8 +6,6 @@ define([
 ], function(game) {
   window.Game = game();
 });
-
-
 (function() {
   var game = new window.Game(document.querySelector('.demo'));
   game.initializeLevelAndStart();

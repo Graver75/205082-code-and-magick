@@ -1,6 +1,5 @@
 'use strict';
 
-var arrReviews;
 define(function () {
   return function (url, callback, callbackName) {
     window[callbackName] = function (data) {
