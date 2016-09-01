@@ -6,6 +6,7 @@ define([
 ], function(load) {
   load(REVIEWS_LOAD_URL, function(data) {
     dataReviews = data;
+    console.log(dataReviews);
   }, '__jsonpCallBack');
 
 });
