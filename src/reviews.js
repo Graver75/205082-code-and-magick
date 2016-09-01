@@ -12,14 +12,9 @@ define([
     dataReviews = data;
     console.log(dataReviews);
 
-    dataReviews = dataReviews.map(function(element) {
+    dataReviews.forEach(function(element) {
       review(element);
     });
+    filters.classList.remove('invisible');
   }, '__jsonpCallBack');
-
-  filters.classList.remove('invisible');
-  return dataReviews;
 });
-
-
-
