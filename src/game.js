@@ -258,8 +258,6 @@ define( function () {
     this._pauseListener = this._pauseListener.bind(this);
 
     this.setDeactivated(false);
-    this.getInitialState();
-    //this.initializeLevelAndStart
   };
 
   Game.prototype = {
