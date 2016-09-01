@@ -10,7 +10,6 @@ define(function () {
     var script = document.createElement('script');
     script.src = url + '?callback=' + callbackName;
     document.body.appendChild(script);
-    window[callbackName](arrReviews);
   };
 });
 
