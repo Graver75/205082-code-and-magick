@@ -3,8 +3,9 @@ define([
   './game',
   './reviews',
   './form'
-], function(game) {
-  var Game = game;
+], function(game, form) {
+  var Game = game();
+  var form = form();
   var game = new Game(document.querySelector('.demo'));
   game.initializeLevelAndStart();
   game.setGameStatus(Game.Verdict.INTRO);
@@ -15,13 +16,13 @@ define([
   formOpenButton.onclick = function(evt) {
     evt.preventDefault();
 
-    window.form.open(function() {
+    form.open(function() {
       game.setGameStatus(Game.Verdict.PAUSE);
       game.setDeactivated(true);
     });
   };
 
-  window.form.onClose = function() {
+  form.onClose = function() {
     game.setDeactivated(false);
   };
 });
