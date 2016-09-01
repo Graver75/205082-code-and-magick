@@ -3,7 +3,6 @@ define([
   './load',
   './review'
 ], function(load, review) {
-  var reviewsList = document.querySelector('.reviews-list');
   var filters = document.querySelector('.reviews-filter');
   var REVIEWS_LOAD_URL = 'http://localhost:1506/api/reviews';
   var dataReviews;

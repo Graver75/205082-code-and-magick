@@ -1,8 +1,7 @@
 'use strict';
-
-define(function () {
-  return function (url, callback, callbackName) {
-    window[callbackName] = function (data) {
+define(function() {
+  return function(url, callback, callbackName) {
+    window[callbackName] = function(data) {
       callback(data);
     };
 
@@ -11,5 +10,3 @@ define(function () {
     document.body.appendChild(script);
   };
 });
-
-

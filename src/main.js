@@ -4,27 +4,24 @@ define([
   './reviews',
   './form'
 ], function(game) {
-  window.Game = game();
-  (function() {
-    var game = new window.Game(document.querySelector('.demo'));
-    game.initializeLevelAndStart();
-    game.setGameStatus(window.Game.Verdict.INTRO);
+  var Game = game;
+  var game = new Game(document.querySelector('.demo'));
+  game.initializeLevelAndStart();
+  game.setGameStatus(Game.Verdict.INTRO);
 
-    var formOpenButton = document.querySelector('.reviews-controls-new');
+  var formOpenButton = document.querySelector('.reviews-controls-new');
 
-    /** @param {MouseEvent} evt */
-    formOpenButton.onclick = function(evt) {
-      evt.preventDefault();
+  /** @param {MouseEvent} evt */
+  formOpenButton.onclick = function(evt) {
+    evt.preventDefault();
 
-      window.form.open(function() {
-        game.setGameStatus(window.Game.Verdict.PAUSE);
-        game.setDeactivated(true);
-      });
-    };
+    window.form.open(function() {
+      game.setGameStatus(Game.Verdict.PAUSE);
+      game.setDeactivated(true);
+    });
+  };
 
-    window.form.onClose = function() {
-      game.setDeactivated(false);
-    };
-  })();
+  window.form.onClose = function() {
+    game.setDeactivated(false);
+  };
 });
-
