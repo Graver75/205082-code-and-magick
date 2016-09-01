@@ -1,14 +1,10 @@
 'use strict';
-var REVIEWS_LOAD_URL = 'http://localhost:1506/api/reviews';
-var dataReviews;
 define([
-  './load'
-], function(load) {
-  load(REVIEWS_LOAD_URL, function(data) {
-    dataReviews = data;
-    console.log(dataReviews);
-  }, '__jsonpCallBack');
-
+  './game',
+  './reviews',
+  './form'
+], function(game) {
+  window.Game = game();
 });
 
 

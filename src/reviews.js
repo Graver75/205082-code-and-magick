@@ -1,20 +1,27 @@
 'use strict';
-var reviewsList = document.querySelector('.reviews-list');
-var filters = document.querySelector('.reviews-filter');
-
 define([
   './load',
   './review'
 ], function(load, review) {
-  var data = load;
-  data = data.map(function(dataReview) {
+  var reviewsList = document.querySelector('.reviews-list');
+  var filters = document.querySelector('.reviews-filter');
+  var REVIEWS_LOAD_URL = 'http://localhost:1506/api/reviews';
+  var dataReviews;
+
+  load(REVIEWS_LOAD_URL, function(data) {
+    dataReviews = data;
+    console.log(dataReviews);
+  }, '__jsonpCallBack');
+
+  dataReviews = dataReviews.map(function(dataReview) {
     review(dataReview);
   });
-  data.forEach(function(elem) {
+  dataReviews.forEach(function(elem) {
     reviewsList.appendChild(elem);
   });
-  return data;
+  filters.classList.remove('invisible');
+  return dataReviews;
 });
 
-filters.classList.remove('invisible');
+
 
