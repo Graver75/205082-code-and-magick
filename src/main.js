@@ -1,11 +1,11 @@
 'use strict';
 var REVIEWS_LOAD_URL = 'http://localhost:1506/api/reviews';
-
+var dataReviews;
 define([
   './load'
 ], function(load) {
   load(REVIEWS_LOAD_URL, function(data) {
-    load.arrReviews = data;
+    dataReviews = data;
   }, '__jsonpCallBack');
 
 });
