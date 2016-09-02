@@ -9,8 +9,6 @@ define([
 
   load(REVIEWS_LOAD_URL, function(data) {
     dataReviews = data;
-    console.log(dataReviews);
-
     dataReviews.forEach(function(element) {
       review(element);
     });
