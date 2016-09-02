@@ -1,6 +1,6 @@
 'use strict';
 var browserCookies = require('browser-cookies');
-define (function() {
+define(function() {
   var formContainer = document.querySelector('.overlay-container');
   var formCloseButton = document.querySelector('.review-form-close');
 

@@ -235,8 +235,8 @@ define( function() {
         }
       );
 
-    return state;
-  };
+      return state;
+    };
 
   /**
    * Конструктор объекта Game. Создает canvas, добавляет обработчики событий
@@ -548,7 +548,7 @@ define( function() {
              * @return {Verdict}
              */
             function checkKeys(state) {
-                return state.keysPressed.ESC ? Verdict.PAUSE : Verdict.CONTINUE;
+              return state.keysPressed.ESC ? Verdict.PAUSE : Verdict.CONTINUE;
             },
 
             /**
@@ -556,7 +556,7 @@ define( function() {
              * @param {Object} state
              * @return {Verdict}
              */
-            function checkTime(state) {
+             function checkTime(state) {
               return Date.now() - state.startTime > 3 * 60 * 1000 ?
                 Verdict.FAIL :
                 Verdict.CONTINUE;
