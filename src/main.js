@@ -1,10 +1,10 @@
-'use strict';
+  'use strict';
 define([
   './game',
   './form',
   './reviews'
-], function(game, form) {
-  var Game = game();
+], function(gameObj, form) {
+  var Game = gameObj();
   var game = new Game(document.querySelector('.demo'));
 
   game.initializeLevelAndStart();

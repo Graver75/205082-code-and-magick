@@ -26,5 +26,5 @@ define(function() {
     img.src = element.author.picture;
 
     reviewsList.appendChild(template);
-  }
+  };
 });
