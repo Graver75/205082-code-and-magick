@@ -556,10 +556,8 @@ define( function() {
              * @param {Object} state
              * @return {Verdict}
              */
-             function checkTime(state) {
-              return Date.now() - state.startTime > 3 * 60 * 1000 ?
-                Verdict.FAIL :
-                Verdict.CONTINUE;
+            function checkTime(state) {
+              return Date.now() - state.startTime > 3 * 60 * 1000 ? Verdict.FAIL : Verdict.CONTINUE;
             }
           ];
         }
