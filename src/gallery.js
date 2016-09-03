@@ -15,32 +15,30 @@ define(function() {
       currentNumberElement.innerText = number;
 
       var img = new Image();
-
       img.onerror = function() {
-        console.log("Error loading image in gallery");
+        console.log('Error loading image in gallery');
       };
-
       img.src = this.pictures[number - 1];
-
       if (previewGalleryElement.querySelector('img')) {
         previewGalleryElement.replaceChild(img, previewGalleryElement.querySelector('img'));
       }
+
       previewGalleryElement.appendChild(img);
     };
     Gallery.prototype.addListeners = function() {
-      controlRightElement.onclick = function () {
+      controlRightElement.onclick = function() {
         if (self.activePicture < TOTAL_PICTURES) {
           self.activePicture++;
           self.setActivePicture(self.activePicture);
         }
       };
-      controlLeftElement.onclick = function () {
+      controlLeftElement.onclick = function() {
         if (self.activePicture !== 1) {
           self.activePicture--;
           self.setActivePicture(self.activePicture);
         }
       };
-      closeButtonElement.onclick = function () {
+      closeButtonElement.onclick = function() {
         self.hide();
       };
     };
