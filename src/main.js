@@ -1,11 +1,13 @@
 'use strict';
 define([
-  './game',
-  './form',
-  './reviews'
-], function(gameObj, form) {
+  './game', './form', './gallery', './reviews'
+], function(gameObj, form, gallery, reviews) {
   var Game = gameObj();
   var game = new Game(document.querySelector('.demo'));
+  var galleryContainer = document.querySelector('.main-section.photogallery');
+  var pictures = galleryContainer['img'];
+  var Gallery = gallery();
+  var gallery = new Gallery()
 
   game.initializeLevelAndStart();
   game.setGameStatus(Game.Verdict.INTRO);
