@@ -1,7 +1,6 @@
 'use strict';
 var browserCookies = require('browser-cookies');
-
-window.form = (function() {
+define(function() {
   var formContainer = document.querySelector('.overlay-container');
   var formCloseButton = document.querySelector('.review-form-close');
 
@@ -30,10 +29,8 @@ window.form = (function() {
     evt.preventDefault();
     form.close();
   };
-
   return form;
-})();
-
+});
 var expireDays = function() {
 
   var now = new Date();
