@@ -1,126 +1,91 @@
 'use strict';
-var browserCookies = require('browser-cookies');
 define(function() {
-  var formContainer = document.querySelector('.overlay-container');
-  var formCloseButton = document.querySelector('.review-form-close');
+  var Form = function() {
+    this.onClose = null;
 
-  var form = {
-    onClose: null,
+    this.browserCookies = require('browser-cookies');
+    this.formContainer = document.querySelector('.overlay-container');
+    this.formCloseButton = document.querySelector('.review-form-close');
+    this.name = document.querySelector('#review-name');
+    this.comment = document.querySelector('#review-text');
+    this.button = document.querySelector('.review-form-control.review-submit');
+    this.control = document.querySelector('div.review-form-control.review-fields');
+    this.controlName = document.querySelector('label.review-fields-label.review-fields-name');
+    this.controlComment = document.querySelector('label.review-fields-label.review-fields-text');
+    this.mark1input = document.querySelector('#review-mark-1');
+    this.mark2input = document.querySelector('#review-mark-2');
+    this.mark3input = document.querySelector('#review-mark-3');
+    this.mark4input = document.querySelector('#review-mark-4');
+    this.mark5input = document.querySelector('#review-mark-5');
+    this.forms = document.querySelector('.review-form');
+    this.mark = this.forms['review-mark'];
+    this.button.disabled = true;
+    var self = this;
 
     /**
      * @param {Function} cb
      */
-    open: function(cb) {
-      formContainer.classList.remove('invisible');
+    this.open = function(cb) {
+      this.formContainer.classList.remove('invisible');
       cb();
-    },
-
-    close: function() {
-      formContainer.classList.add('invisible');
+    };
+    this.close = function() {
+      this.formContainer.classList.add('invisible');
 
       if (typeof this.onClose === 'function') {
         this.onClose();
       }
-    }
+    };
+    this.getExpireDays = function() {
+      var now = new Date();
+      var grace = new Date(now.getFullYear(), 11, 9);
+      var days;
+      if (now.getTime() > grace.getTime()) {
+        days = parseInt((now.getTime() - grace.getTime()) / 1000 / 60 / 60 / 24, 10);
+      } else {
+        grace.setFullYear(now.getFullYear() - 1);
+        days = parseInt((now.getTime() - grace.getTime()) / 1000 / 60 / 60 / 24, 10);
+      }
+      return days;
+    };
+    this.validateForms = function() {
+      this.control.classList.add('invisible');
+      this.controlName.classList.add('invisible');
+      this.controlComment.classList.add('invisible');
+      this.button.disabled = false;
+      var nameValid = true;
+      var commentValid = true;
+      if (!this.name.value) {
+        this.controlName.classList.remove('invisible');
+        nameValid = false;
+      }
+      if (+this.mark.value < 3 && !this.comment.value) {
+        this.controlComment.classList.remove('invisible');
+        commentValid = false;
+      }
+      if (nameValid && commentValid) {
+        this.control.classList.add('invisible');
+      } else {
+        this.control.classList.remove('invisible');
+        this.button.disabled = true;
+      }
+    };
+    this.setCookie = function() {
+      this.browserCookies.set('review-name', this.name.value, {expires: this.getExpireDays()});
+      this.browserCookies.set('review-mark', this.mark.value, {expires: this.getExpireDays()});
+    };
+    this.getCookie = function() {
+      if (this.browserCookies.get('review-name')) {
+        this.name.value = this.browserCookies.get('review-name');
+      }
+      if (this.browserCookies.get('review-mark')) {
+        this.mark.value = (this.browserCookies.get('review-mark'));
+      }
+    };
+    this.formCloseButton.onclick = function(evt) {
+      evt.preventDefault();
+      self.close();
+    };
   };
-
-
-  formCloseButton.onclick = function(evt) {
-    evt.preventDefault();
-    form.close();
-  };
-  return form;
+  return Form;
 });
-var expireDays = function() {
-
-  var now = new Date();
-  var grace = new Date(now.getFullYear(), 11, 9);
-  var days;
-
-  if (now.getTime() > grace.getTime()) {
-    days = parseInt((now.getTime() - grace.getTime()) / 1000 / 60 / 60 / 24, 10);
-  } else {
-    grace.setFullYear(now.getFullYear() - 1);
-    days = parseInt((now.getTime() - grace.getTime()) / 1000 / 60 / 60 / 24, 10);
-  }
-  return days;
-
-};
-
-
-var name = document.querySelector('#review-name');
-var comment = document.querySelector('#review-text');
-var button = document.querySelector('.review-form-control.review-submit');
-var control = document.querySelector('div.review-form-control.review-fields');
-var controlName = document.querySelector('label.review-fields-label.review-fields-name');
-var controlComment = document.querySelector('label.review-fields-label.review-fields-text');
-var mark1input = document.querySelector('#review-mark-1');
-var mark2input = document.querySelector('#review-mark-2');
-var mark3input = document.querySelector('#review-mark-3');
-var mark4input = document.querySelector('#review-mark-4');
-var mark5input = document.querySelector('#review-mark-5');
-var form = document.querySelector('.review-form');
-var mark = form['review-mark'];
-
-button.disabled = true;
-form.onsubmit = function() {
-
-  browserCookies.set('review-name', name.value, {expires: expireDays()});
-  browserCookies.set('review-mark', mark.value, {expires: expireDays()});
-
-};
-(function fillInputs() {
-
-  if (browserCookies.get('review-name')) {
-    name.value = browserCookies.get('review-name');
-  }
-  if (browserCookies.get('review-mark')) {
-    mark.value = (browserCookies.get('review-mark'));
-  }
-
-})();
-//listenInputs(); // первичыный осмотр полей
-name.onchange = function() {
-  listenInputs();
-};
-comment.onchange = function() {
-  listenInputs();
-};
-mark1input.onchange = function() {
-  listenInputs();
-};
-mark2input.onchange = function() {
-  listenInputs();
-};
-mark3input.onchange = function() {
-  listenInputs();
-};
-mark4input.onchange = function() {
-  listenInputs();
-};
-mark5input.onchange = function() {
-  listenInputs();
-};
-
-function listenInputs() {
-  control.classList.add('invisible');
-  controlName.classList.add('invisible');
-  controlComment.classList.add('invisible');
-  button.disabled = false;
-  var nameValid = true;
-  var commentValid = true;
-  if (!name.value) {
-    controlName.classList.remove('invisible');
-    nameValid = false;
-  }
-  if (+mark.value < 3 && !comment.value) {
-    controlComment.classList.remove('invisible');
-    commentValid = false;
-  }
-  if (nameValid && commentValid) {
-    control.classList.add('invisible');
-  } else {
-    control.classList.remove('invisible');
-    button.disabled = true;
-  }
-}

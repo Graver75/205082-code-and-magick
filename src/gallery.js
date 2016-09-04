@@ -2,6 +2,20 @@
 
 define(function() {
   var Gallery = function(pictures) {
+    this.pictures = pictures;
+    this.activePicture = 1;
+
+    var galleryElement = document.querySelector('.overlay-gallery');
+    var controlLeftElement = document.querySelector('.overlay-gallery-control-left');
+    var controlRightElement = document.querySelector('.overlay-gallery-control-right');
+    var currentNumberElement = document.querySelector('.preview-number-current');
+    var totalNumberElement = document.querySelector('.preview-number-total');
+    var closeButtonElement = document.querySelector('.overlay-gallery-close');
+    var previewGalleryElement = document.querySelector('.overlay-gallery-preview');
+    var self = this;
+    var TOTAL_PICTURES = pictures.length;
+    totalNumberElement.innerText = TOTAL_PICTURES;
+
     Gallery.prototype.show = function(number) {
       galleryElement.classList.remove('invisible');
       this.addListeners();
@@ -9,6 +23,7 @@ define(function() {
     };
     Gallery.prototype.hide = function() {
       galleryElement.classList.add('invisible');
+      this.removeListeners();
     };
     Gallery.prototype.setActivePicture = function(number) {
       this.activePicture = number;
@@ -43,23 +58,10 @@ define(function() {
       };
     };
     Gallery.prototype.removeListeners = function() {
-      self.controlRightElement.onclick = null;
-      self.controlLeftElement.onclick = null;
-      self.closeButtonElement.onclick = null;
+      controlRightElement.onclick = null;
+      controlLeftElement.onclick = null;
+      closeButtonElement.onclick = null;
     };
-    var galleryElement = document.querySelector('.overlay-gallery');
-    var controlLeftElement = document.querySelector('.overlay-gallery-control-left');
-    var controlRightElement = document.querySelector('.overlay-gallery-control-right');
-    var currentNumberElement = document.querySelector('.preview-number-current');
-    var totalNumberElement = document.querySelector('.preview-number-total');
-    var closeButtonElement = document.querySelector('.overlay-gallery-close');
-    var previewGalleryElement = document.querySelector('.overlay-gallery-preview');
-    var self = this;
-    var TOTAL_PICTURES = pictures.length;
-    totalNumberElement.innerText = TOTAL_PICTURES;
-
-    this.pictures = pictures;
-    this.activePicture = 1;
   };
   return Gallery;
 });

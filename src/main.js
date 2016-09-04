@@ -4,46 +4,59 @@ define([
   './form',
   './gallery',
   './reviews'
-], function(gameObj, form, GalleryObj) {
-  var Game = gameObj();
+], function(GameObj, FormObj, GalleryObj) {
+  var Game = GameObj();
   var game = new Game(document.querySelector('.demo'));
-  var section = document.querySelector('.photogallery');
-  var pictures = [
-    section.childNodes[3].childNodes[0].src,
-    section.childNodes[5].childNodes[0].src,
-    section.childNodes[7].childNodes[0].src,
-    section.childNodes[9].childNodes[0].src,
-    section.childNodes[11].childNodes[0].src,
-    section.childNodes[13].childNodes[0].src
-  ];
-  var gallery = new GalleryObj(pictures);
-  var links = [
-    section.childNodes[3],
-    section.childNodes[5],
-    section.childNodes[7],
-    section.childNodes[9],
-    section.childNodes[11],
-    section.childNodes[13]
-  ];
-  links[0].onclick = function() {
-    gallery.show(1);
+
+  var form = new FormObj();
+  form.name.onchange = function() {
+    form.validateForms();
   };
-  links[1].onclick = function() {
-    gallery.show(2);
+  form.comment.onchange = function() {
+    form.validateForms();
   };
-  links[2].onclick = function() {
-    gallery.show(3);
+  form.mark1input.onchange = function() {
+    form.validateForms();
   };
-  links[3].onclick = function() {
-    gallery.show(4);
+  form.mark2input.onchange = function() {
+    form.validateForms();
   };
-  links[4].onclick = function() {
-    gallery.show(5);
+  form.mark3input.onchange = function() {
+    form.validateForms();
   };
-  links[5].onclick = function() {
-    gallery.show(6);
+  form.mark4input.onchange = function() {
+    form.validateForms();
+  };
+  form.mark5input.onchange = function() {
+    form.validateForms();
   };
 
+  var linksElements = document.querySelectorAll('.photogallery-image');
+  var pictures = document.querySelectorAll('.gallery-image');
+  var links = [];
+  pictures.forEach(function(elem, i) {
+    links[i] = elem.src;
+  });
+  var gallery = new GalleryObj(links);
+
+  linksElements[0].onclick = function() {
+    gallery.show(1);
+  };
+  linksElements[1].onclick = function() {
+    gallery.show(2);
+  };
+  linksElements[2].onclick = function() {
+    gallery.show(3);
+  };
+  linksElements[3].onclick = function() {
+    gallery.show(4);
+  };
+  linksElements[4].onclick = function() {
+    gallery.show(5);
+  };
+  linksElements[5].onclick = function() {
+    gallery.show(6);
+  };
 
   game.initializeLevelAndStart();
   game.setGameStatus(Game.Verdict.INTRO);

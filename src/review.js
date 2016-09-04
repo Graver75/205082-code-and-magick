@@ -8,7 +8,6 @@ define(function() {
 
     var template = templateElement.cloneNode(true);
     template = template.content.querySelector('.review');
-    console.dir(template);
     template.querySelector('.review-text').textContent = element.description;
 
     var rating = template.querySelector('.review-rating');
