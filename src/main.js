@@ -4,11 +4,11 @@ define([
   './form',
   './gallery',
   './reviews'
-], function(gameObj, formObj, galleryObj) {
-  var Game = gameObj();
-  var game = new Game(document.querySelector('.demo'));
+], function(GameObj, FormObj, GalleryObj) {
+  var GameConstructor = GameObj();
+  var game = new GameConstructor(document.querySelector('.demo'));
 
-  var form = new formObj();
+  var form = new FormObj();
   form.name.onchange = function() {
     form.validateForms();
   };
@@ -37,15 +37,16 @@ define([
   pictures.forEach(function(elem, i) {
     links[i] = elem.src;
   });
-  var gallery = new galleryObj(links);
+  var gallery = new GalleryObj(links);
   linksElements.forEach(function(elem, id, arr) {
     arr[id].onclick = function(event) {
+      console.log(event);
       gallery.show(id + 1);
-    }
+    };
   });
 
   game.initializeLevelAndStart();
-  game.setGameStatus(Game.Verdict.INTRO);
+  game.setGameStatus(GameConstructor.Verdict.INTRO);
 
   var formOpenButton = document.querySelector('.reviews-controls-new');
 
@@ -54,7 +55,7 @@ define([
     evt.preventDefault();
 
     form.open(function() {
-      game.setGameStatus(Game.Verdict.PAUSE);
+      game.setGameStatus(GameConstructor.Verdict.PAUSE);
       game.setDeactivated(true);
     });
   };
