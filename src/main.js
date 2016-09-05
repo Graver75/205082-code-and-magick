@@ -17,8 +17,7 @@ define([
     form.validateForms();
   };
   markInputs.forEach(function(elem, id, arr) {
-    arr[id].onclick = function(event) {
-      console.log(event);
+    arr[id].onclick = function() {
       form.validateForms();
     };
   });
