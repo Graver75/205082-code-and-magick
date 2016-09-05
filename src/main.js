@@ -7,7 +7,7 @@ define([
 ], function(gameObj, FormObj, GalleryObj) {
   var GameConstructor = gameObj(); //неоднообразие, спасибо трэвису
   var game = new GameConstructor(document.querySelector('.demo'));
-  var markInputs = document.getElementsByName('review-mark')
+  var markInputs = document.getElementsByName('review-mark');
 
   var form = new FormObj();
   form.name.onchange = function() {
@@ -17,7 +17,8 @@ define([
     form.validateForms();
   };
   markInputs.forEach(function(elem, id, arr) {
-    markInputs[id].onclick = function(event) {
+    arr[id].onclick = function(event) {
+      console.log(event);
       form.validateForms();
     };
   });
