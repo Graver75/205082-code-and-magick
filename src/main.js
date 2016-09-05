@@ -7,6 +7,7 @@ define([
 ], function(gameObj, FormObj, GalleryObj) {
   var GameConstructor = gameObj(); //неоднообразие, спасибо трэвису
   var game = new GameConstructor(document.querySelector('.demo'));
+  var markInputs = document.getElementsByName('review-mark')
 
   var form = new FormObj();
   form.name.onchange = function() {
@@ -15,21 +16,11 @@ define([
   form.comment.onchange = function() {
     form.validateForms();
   };
-  form.mark1input.onchange = function() {
-    form.validateForms();
-  };
-  form.mark2input.onchange = function() {
-    form.validateForms();
-  };
-  form.mark3input.onchange = function() {
-    form.validateForms();
-  };
-  form.mark4input.onchange = function() {
-    form.validateForms();
-  };
-  form.mark5input.onchange = function() {
-    form.validateForms();
-  };
+  markInputs.forEach(function(elem, id, arr) {
+    markInputs[id].onclick = function(event) {
+      form.validateForms();
+    };
+  });
 
   var linksElements = document.querySelectorAll('.photogallery-image');
   var pictures = document.querySelectorAll('.gallery-image');
