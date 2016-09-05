@@ -4,8 +4,8 @@ define([
   './form',
   './gallery',
   './reviews'
-], function(GameObj, FormObj, GalleryObj) {
-  var GameConstructor = GameObj();
+], function(gameObj, FormObj, GalleryObj) {
+  var GameConstructor = gameObj(); //неоднообразие, спасибо трэвису
   var game = new GameConstructor(document.querySelector('.demo'));
 
   var form = new FormObj();
