@@ -12,11 +12,6 @@ define(function() {
     this.control = document.querySelector('div.review-form-control.review-fields');
     this.controlName = document.querySelector('label.review-fields-label.review-fields-name');
     this.controlComment = document.querySelector('label.review-fields-label.review-fields-text');
-    this.mark1input = document.querySelector('#review-mark-1');
-    this.mark2input = document.querySelector('#review-mark-2');
-    this.mark3input = document.querySelector('#review-mark-3');
-    this.mark4input = document.querySelector('#review-mark-4');
-    this.mark5input = document.querySelector('#review-mark-5');
     this.forms = document.querySelector('.review-form');
     this.mark = this.forms['review-mark'];
     this.button.disabled = true;
