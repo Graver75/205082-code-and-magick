@@ -4,11 +4,11 @@ define([
   './form',
   './gallery',
   './reviews'
-], function(GameObj, FormObj, GalleryObj) {
-  var Game = GameObj();
+], function(gameObj, formObj, galleryObj) {
+  var Game = gameObj();
   var game = new Game(document.querySelector('.demo'));
 
-  var form = new FormObj();
+  var form = new formObj();
   form.name.onchange = function() {
     form.validateForms();
   };
@@ -37,26 +37,12 @@ define([
   pictures.forEach(function(elem, i) {
     links[i] = elem.src;
   });
-  var gallery = new GalleryObj(links);
-
-  linksElements[0].onclick = function() {
-    gallery.show(1);
-  };
-  linksElements[1].onclick = function() {
-    gallery.show(2);
-  };
-  linksElements[2].onclick = function() {
-    gallery.show(3);
-  };
-  linksElements[3].onclick = function() {
-    gallery.show(4);
-  };
-  linksElements[4].onclick = function() {
-    gallery.show(5);
-  };
-  linksElements[5].onclick = function() {
-    gallery.show(6);
-  };
+  var gallery = new galleryObj(links);
+  linksElements.forEach(function(elem, id, arr) {
+    arr[id].onclick = function(event) {
+      gallery.show(id + 1);
+    }
+  });
 
   game.initializeLevelAndStart();
   game.setGameStatus(Game.Verdict.INTRO);
