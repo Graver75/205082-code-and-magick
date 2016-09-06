@@ -2,7 +2,7 @@
 define([
   './load',
   './review'
-], function(load, reviewObj) {
+], function(load, ReviewObj) {
   var filters = document.querySelector('.reviews-filter');
   var REVIEWS_LOAD_URL = 'http://localhost:1506/api/reviews';
   var dataReviews;
@@ -12,7 +12,7 @@ define([
   load(REVIEWS_LOAD_URL, function(data) {
     dataReviews = data;
     dataReviews.forEach(function(element, id) {
-      reviews[id] = new reviewObj(element);
+      reviews[id] = new ReviewObj(element);
       reviewsContainer.appendChild(reviews[id].element);
     });
     filters.classList.remove('invisible');

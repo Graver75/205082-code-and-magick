@@ -9,7 +9,7 @@ define(function() {
       this.quizAnswerYes = this.element.querySelector('.review-quiz-answer-yes');
       this.quizAnswerNo = this.element.querySelector('.review-quiz-answer-no');
     };
-    Review.prototype.setRating = function(number) {
+    Review.prototype.setRating = function() {
       this.rating.style.width = 40 * data.rating + 'px';
       this.rating.style.maxWidth = '200px';
     };
@@ -35,7 +35,6 @@ define(function() {
     };
     Review.prototype.loadImage = function(url, cb) {
       var image = new Image();
-      var imageTimeout = null;
       image.onload = function() {
         cb(true);
       };
