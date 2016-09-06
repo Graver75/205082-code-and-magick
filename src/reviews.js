@@ -2,15 +2,18 @@
 define([
   './load',
   './review'
-], function(load, review) {
+], function(load, reviewObj) {
   var filters = document.querySelector('.reviews-filter');
   var REVIEWS_LOAD_URL = 'http://localhost:1506/api/reviews';
   var dataReviews;
+  var reviews = [];
+  var reviewsContainer = document.querySelector('.reviews-list');
 
   load(REVIEWS_LOAD_URL, function(data) {
     dataReviews = data;
-    dataReviews.forEach(function(element) {
-      review(element);
+    dataReviews.forEach(function(element, id) {
+      reviews[id] = new reviewObj(element);
+      reviewsContainer.appendChild(reviews[id].element);
     });
     filters.classList.remove('invisible');
   }, '__jsonpCallBack');
