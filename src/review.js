@@ -33,13 +33,13 @@ define(function() {
       this.quizAnswerYes.classList.toggle(this.ACTIVE_ANSWER, isYes);
       this.quizAnswerNo.classList.toggle(this.ACTIVE_ANSWER, !isYes);
     };
-    Review.prototype.loadImage = function(url, cb) {
+    Review.prototype.loadImage = function(url, callBack) {
       var image = new Image();
       image.onload = function() {
-        cb(true);
+        callBack(true);
       };
       image.onerror = function() {
-        cb(false);
+        callBack(false);
       };
       image.src = url;
     };
