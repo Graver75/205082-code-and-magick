@@ -4,7 +4,7 @@ define([
   './review'
 ], function(load, ReviewObj) {
   let filters = document.querySelector('.reviews-filter'),
-      REVIEWS_LOAD_URL = 'http://localhost:1506/api/reviews',
+      REVIEWS_LOAD_URL = location.href + 'api/reviews', 
       dataReviews,
       reviews = [],
       reviewsContainer = document.querySelector('.reviews-list');
