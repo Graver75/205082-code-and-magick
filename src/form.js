@@ -1,6 +1,6 @@
 'use strict';
 define(function() {
-  var Form = function() {
+  let Form = function() {
     this.onClose = null;
 
     this.browserCookies = require('browser-cookies');
@@ -15,7 +15,7 @@ define(function() {
     this.forms = document.querySelector('.review-form');
     this.mark = this.forms['review-mark'];
     this.button.disabled = true;
-    var self = this;
+    let self = this;
 
     /**
      * @param {Function} cb
@@ -32,9 +32,9 @@ define(function() {
       }
     };
     this.getExpireDays = function() {
-      var now = new Date();
-      var grace = new Date(now.getFullYear(), 11, 9);
-      var days;
+      let now = new Date(),
+          grace = new Date(now.getFullYear(), 11, 9),
+          days;
       if (now.getTime() > grace.getTime()) {
         days = parseInt((now.getTime() - grace.getTime()) / 1000 / 60 / 60 / 24, 10);
       } else {
@@ -48,8 +48,8 @@ define(function() {
       this.controlName.classList.add('invisible');
       this.controlComment.classList.add('invisible');
       this.button.disabled = false;
-      var nameValid = true;
-      var commentValid = true;
+      let nameValid = true,
+          commentValid = true;
       if (!this.name.value) {
         this.controlName.classList.remove('invisible');
         nameValid = false;

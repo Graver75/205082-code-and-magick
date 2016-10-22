@@ -5,7 +5,7 @@ define([
   './gallery',
   './reviews'
 ], function(gameObj, FormObj, GalleryObj) {
-  var GameConstructor = gameObj(); //неоднообразие, спасибо трэвису
+  var GameConstructor = gameObj();
   var game = new GameConstructor(document.querySelector('.demo'));
   var markInputs = document.getElementsByName('review-mark');
 

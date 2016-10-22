@@ -5,7 +5,7 @@ define(function() {
       callback(data);
     };
 
-    var script = document.createElement('script');
+    let script = document.createElement('script');
     script.src = url + '?callback=' + callbackName;
     document.body.appendChild(script);
   };

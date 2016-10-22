@@ -1,5 +1,5 @@
 function getMessage (a, b) {
-	var sMessage;
+	let sMessage;
 	if (typeof a === 'boolean') {
 		if (a) {
 			sMessage = 'Я попал в ' + b;
@@ -20,8 +20,8 @@ function getMessage (a, b) {
 }
 
 function setPath (a, b) {	
-	var i;
-	var summ = 0;
+	let i,
+	    summ = 0;
 	for(i = 0; i < a.length; i++) {
 		summ = summ + a[i] * b[i];
 
@@ -29,8 +29,8 @@ function setPath (a, b) {
 	return summ; 
 }
 function setSumm (a) {
-	var summ = 0;
-	var i;
+	let summ = 0,
+	    i;
 	for(i = 0; i < a.length; i++) {
 		summ = summ + a[i];
 	}

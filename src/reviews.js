@@ -3,11 +3,11 @@ define([
   './load',
   './review'
 ], function(load, ReviewObj) {
-  var filters = document.querySelector('.reviews-filter');
-  var REVIEWS_LOAD_URL = 'http://localhost:1506/api/reviews';
-  var dataReviews;
-  var reviews = [];
-  var reviewsContainer = document.querySelector('.reviews-list');
+  let filters = document.querySelector('.reviews-filter'),
+      REVIEWS_LOAD_URL = 'http://localhost:1506/api/reviews',
+      dataReviews,
+      reviews = [],
+      reviewsContainer = document.querySelector('.reviews-list');
 
   load(REVIEWS_LOAD_URL, function(data) {
     dataReviews = data;

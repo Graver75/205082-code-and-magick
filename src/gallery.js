@@ -1,19 +1,36 @@
 'use strict';
 
 define(function() {
-  var Gallery = function(pictures) {
+  let Gallery = function(pictures) {
     this.pictures = pictures;
     this.activePicture = 1;
 
-    var galleryElement = document.querySelector('.overlay-gallery');
-    var controlLeftElement = document.querySelector('.overlay-gallery-control-left');
-    var controlRightElement = document.querySelector('.overlay-gallery-control-right');
-    var currentNumberElement = document.querySelector('.preview-number-current');
-    var totalNumberElement = document.querySelector('.preview-number-total');
-    var closeButtonElement = document.querySelector('.overlay-gallery-close');
-    var previewGalleryElement = document.querySelector('.overlay-gallery-preview');
-    var self = this;
-    var TOTAL_PICTURES = pictures.length;
+    let galleryElement = document.querySelector('.overlay-gallery'),
+        controlLeftElement = document.querySelector('.overlay-gallery-control-left'),
+        controlRightElement = document.querySelector('.overlay-gallery-control-right'),
+        currentNumberElement = document.querySelector('.preview-number-current'),
+        totalNumberElement = document.querySelector('.preview-number-total'),
+        closeButtonElement = document.querySelector('.overlay-gallery-close'),
+        previewGalleryElement = document.querySelector('.overlay-gallery-preview'),
+        self = this,
+        TOTAL_PICTURES = pictures.length,
+        addListeners = function() {
+      controlRightElement.onclick = function() {
+        if (this.activePicture < TOTAL_PICTURES) {
+          this.activePicture++;
+          this.setActivePicture(this.activePicture);
+        }
+      };
+      controlLeftElement.onclick = function() {
+        if (this.activePicture !== 1) {
+          this.activePicture--;
+          this.setActivePicture(this.activePicture);
+        }
+      };
+      closeButtonElement.onclick = function() {
+        this.hide();
+      };
+    };
     totalNumberElement.innerText = TOTAL_PICTURES;
 
     Gallery.prototype.show = function(number) {
@@ -29,7 +46,7 @@ define(function() {
       this.activePicture = number;
       currentNumberElement.innerText = number;
 
-      var img = new Image();
+      let img = new Image();
       img.onerror = function() {
         console.log('Error loading image in gallery');
       };
@@ -40,23 +57,7 @@ define(function() {
 
       previewGalleryElement.appendChild(img);
     };
-    Gallery.prototype.addListeners = function() {
-      controlRightElement.onclick = function() {
-        if (self.activePicture < TOTAL_PICTURES) {
-          self.activePicture++;
-          self.setActivePicture(self.activePicture);
-        }
-      };
-      controlLeftElement.onclick = function() {
-        if (self.activePicture !== 1) {
-          self.activePicture--;
-          self.setActivePicture(self.activePicture);
-        }
-      };
-      closeButtonElement.onclick = function() {
-        self.hide();
-      };
-    };
+    Gallery.prototype.addListeners = addListeners.bind(this);
     Gallery.prototype.removeListeners = function() {
       controlRightElement.onclick = null;
       controlLeftElement.onclick = null;

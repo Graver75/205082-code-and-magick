@@ -1,6 +1,6 @@
 'use strict';
 define(function() {
-  var Review = function(data) {
+  let Review = function(data) {
     Review.prototype.getElements = function() {
       this.element = reviewClone.cloneNode(true);
       this.description = this.element.querySelector('.review-text');
@@ -34,7 +34,7 @@ define(function() {
       this.quizAnswerNo.classList.toggle(this.ACTIVE_ANSWER, !isYes);
     };
     Review.prototype.loadImage = function(url, callBack) {
-      var image = new Image();
+      let image = new Image();
       image.onload = function() {
         callBack(true);
       };
@@ -47,8 +47,8 @@ define(function() {
     Review.prototype.LOAD_FAILURE = 'review-load-failure';
     Review.prototype.ACTIVE_ANSWER = 'review-quiz-answer-active';
 
-    var reviewTemplate = document.getElementById('review-template');
-    var reviewClone = reviewTemplate.content.querySelector('.review');
+    let reviewTemplate = document.getElementById('review-template'),
+        reviewClone = reviewTemplate.content.querySelector('.review');
     this.data = data;
 
     this.getElements();
